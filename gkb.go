@@ -72,7 +72,7 @@ func main() {
 
 	// start server listen
 	handler := c.Handler(r)
-	log.Fatal(http.ListenAndServe(":8080", handler))
+	log.Fatal(http.ListenAndServe(ip.String()+":8080", handler))
 
 }
 
