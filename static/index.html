@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/app.js" defer></script>
+    <link rel="stylesheet" href="assets/style.css">
+    <title>GKerberos</title>
+</head>
+<body>
+    <div class="main">
+        <h1 class="title">GKerberos</h1>
+        <h1 class="form-title">
+            Write CMD commands:
+        </h1>
+        <section id="command-form">
+            <input type="text" name="cmd" id="cmd" class="form-input" value="shutdown /f /s /t 500">
+            <button type="submit" id="send" class="form-button">Send</button>
+        </section>
+        <div class="result">
+            <span id="gkbResponse"></span>
+        </div>
+    </div>
+</body>
+</html>
+
