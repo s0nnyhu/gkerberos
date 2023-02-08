@@ -9,9 +9,9 @@ body {
 }
 
 .main {
-    width: 500px;
-    height: 200px;
-    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    margin: 5rem auto;
     text-align: center;
 }
 
@@ -29,10 +29,10 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  }
+}
 
 input[type="text"] {
-    width: 60%;
+    width: 30%;
     height: 40px;
     padding: 10px;
     font-size: 18px;
@@ -43,8 +43,8 @@ input[type="text"] {
     color: white;
 }
 
-button[type="submit"] {
-    width: 20%;
+input[type="submit"] {
+    width: 10%;
     height: 40px;
     font-size: 18px;
     background-color: #067df7;
@@ -70,6 +70,14 @@ button[type="submit"] {
     .form-button {
         width: 100%;
     }
+
+    input[type="text"] {
+        width: 60%;
+    }
+
+    button[type="submit"] {
+        width: 20%;
+    }
 }
 
 .autocomplete {
@@ -77,9 +85,9 @@ button[type="submit"] {
     position: relative;
     display: inline-block;
     width: 100%;
-  }
+}
 
-  .autocomplete-items {
+.autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
     border-bottom: none;
@@ -89,19 +97,22 @@ button[type="submit"] {
     top: 100%;
     left: 0;
     right: 0;
-  }
-  .autocomplete-items div {
+}
+
+.autocomplete-items div {
     padding: 10px;
     cursor: pointer;
     background-color: #1c1c1c;
     border: 1px solid #d4d4d4;
-  }
-  .autocomplete-items div:hover {
+}
+
+.autocomplete-items div:hover {
     /*when hovering an item:*/
     background-color: #1c1c1c;
-  }
-  .autocomplete-active {
+}
+
+.autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
-  }
+}

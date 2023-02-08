@@ -14,14 +14,17 @@
         <h1 class="form-title">
             Write CMD commands:
         </h1>
-        <section id="command-form">
-            <div class="autocomplete">
-                <input type="text" name="cmd" id="cmd" class="form-input" value="shutdown /f /s /t 500">
-            </div>
-            <button type="submit" id="send" class="form-button">Send</button>
+        <section>
+            <form id="command-form">
+                <div class="autocomplete">
+                    <input type="text" id="cmd" class="form-input" value="shutdown /f /s /t 500">
+                    <span style="cursor: pointer;" onclick="var input = this.previousElementSibling; input.value = ''; input.focus();">X</span>
+                </div>
+                <input type="submit" id="send" class="form-button" value="Send" />
+            </form>
         </section>
         <div class="result">
-            <span id="gkbResponse"></span>
+            <span style="white-space: pre-wrap" id="gkbResponse"></span>
         </div>
     </div>
 </body>

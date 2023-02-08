@@ -20,6 +20,7 @@ import (
 type Response struct {
 	Status  string `json:"status"`
 	Message string `json:"message"`
+	Output  string `json:output`
 }
 
 type Cmd struct {
@@ -97,6 +98,7 @@ func handleCommands(w http.ResponseWriter, r *http.Request) {
 		response := &Response{
 			Status:  status,
 			Message: message,
+			Output:  "",
 		}
 		w.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(w).Encode(response)
@@ -137,6 +139,7 @@ func handleVolumeCommand(data Cmd, w http.ResponseWriter) {
 	response := &Response{
 		Status:  status,
 		Message: message,
+		Output:  "",
 	}
 
 	json.NewEncoder(w).Encode(response)
@@ -146,7 +149,9 @@ func handleCmdCommand(data Cmd, w http.ResponseWriter) {
 	status := "NA"
 	message := "NA"
 
-	if err := exec.Command("cmd", "/C", data.Cmd).Run(); err != nil {
+	out, err := exec.Command("cmd", "/C", data.Cmd).Output()
+
+	if err != nil {
 		log.Println("Failed to initiate cmd:", err)
 		status = "KO"
 		message = "Failed to initiate cmd: " + err.Error()
@@ -158,9 +163,22 @@ func handleCmdCommand(data Cmd, w http.ResponseWriter) {
 		w.WriteHeader(http.StatusCreated)
 	}
 
+	// if err := exec.Command("cmd", "/C", data.Cmd).Run(); err != nil {
+	// 	log.Println("Failed to initiate cmd:", err)
+	// 	status = "KO"
+	// 	message = "Failed to initiate cmd: " + err.Error()
+	// 	w.WriteHeader(http.StatusInternalServerError)
+	// } else {
+	// 	log.Println("Executing " + data.Cmd)
+	// 	status = "OK"
+	// 	message = "cmd executed successfully"
+	// 	w.WriteHeader(http.StatusCreated)
+	// }
+
 	response := &Response{
 		Status:  status,
 		Message: message,
+		Output:  string(out),
 	}
 
 	json.NewEncoder(w).Encode(response)
