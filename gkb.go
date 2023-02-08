@@ -20,7 +20,7 @@ import (
 type Response struct {
 	Status  string `json:"status"`
 	Message string `json:"message"`
-	Output  string `json:output`
+	Output  string `json:"output"`
 }
 
 type Cmd struct {
