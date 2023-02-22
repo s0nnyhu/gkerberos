@@ -4,7 +4,6 @@ import (
 	"embed"
 	_ "embed"
 	"encoding/json"
-	"fmt"
 	"io/fs"
 	"log"
 	"net"
@@ -78,6 +77,8 @@ func main() {
 		w.Write(indexPage)
 	})
 
+	log.Printf(title)
+
 	log.Printf("Listening on %s:8080", ip.String())
 
 	c := cors.New(cors.Options{
@@ -88,7 +89,6 @@ func main() {
 	// start server listen
 	handler := c.Handler(r)
 
-	fmt.Println(title)
 	log.Fatal(http.ListenAndServe(ip.String()+":8080", handler))
 
 }
